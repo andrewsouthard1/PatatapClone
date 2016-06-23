@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+	
+	var circle = new Path.Circle({
+		center: [50, 50],
+		radius: 10,
+		fillColor: 'purple'
+	});
+
+	for (var i = 0; i< 10; i++){
+		for (var j = 0; j< 10; j++){
+
+			var copy = circle.clone();
+			copy.position.x += i * (copy.bounds.width*5);
+			copy.position.y += j * (copy.bounds.width*5);
+		}
+	}
+
+		
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
