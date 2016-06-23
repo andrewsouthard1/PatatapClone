@@ -5,21 +5,25 @@
 	<link rel="stylesheet" type="text/css" href="circles.css">
 	<script type="text/javascript" src="paper-full.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
-	
-	var circle = new Path.Circle({
-		center: [50, 50],
-		radius: 10,
-		fillColor: 'purple'
-	});
 
-	for (var i = 0; i< 10; i++){
-		for (var j = 0; j< 10; j++){
+	var circles = [];	
+		
+	function onKeyDown(event) {
 
-			var copy = circle.clone();
-			copy.position.x += i * (copy.bounds.width*5);
-			copy.position.y += j * (copy.bounds.width*5);
-		}
+		var maxPoint = new Point(view.size.width, view.size.height);
+		var randomPoint = Point.random();
+		var point = maxPoint * randomPoint;
+		var newCircle = new Path.Circle(point, 10);
+		newCircle.fillColor = "blue";
+		circles.push(newCircle);
 	}
+
+	function onFrame(event){
+		for(var i = 0; i<circles.length; i++){
+			circles[i].fillColor.hue += 1;
+			circles[i].scale(.9);
+		}
+	}	
 
 		
 
